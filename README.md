@@ -3,25 +3,26 @@
 [Project](https://kamwoh.github.io/DeepIPR/) | [ArXiv](https://arxiv.org/abs/1909.07830) | [PDF](https://doi.org/10.1109/TPAMI.2021.3088846)
 
 ### Official pytorch implementation of the paper: 
-#### - DeepIP: Deep Neural Network Intellectual Property Protection with Passports
+#### - DeepIPR: Deep Neural Network Ownership Verification with Passports
 
-[TPAMI 2021](https://ieeexplore.ieee.org/document/9454280)
+[TPAMI 2022](https://ieeexplore.ieee.org/document/9454280)
 
 #### - Rethinking Deep Neural Network Ownership Verification: Embedding Passports to Defeat Ambiguity Attacks
 
 [NeurIPS 2019](https://proceedings.neurips.cc/paper/2019/hash/75455e062929d32a333868084286bb68-Abstract.html)
 
-Released on September 16, 2019
+(Released on September 16, 2019)
 
-Updated on September 9, 2021
+Updated on September 25, 2022
 
 ## Updates
 1. Fix bugs
 2. Added training and attack bash scripts (see `training.sh` and `attacking.sh`)
 3. Added flipping attack (see `flip_attack.py`)
 4. Added ImageNet experiment
-5. Our framework on GAN IP protection is accepted in CVPR 2021, see [Project Repo](https://github.com/dingsheng-ong/ipr-gan).
-6. Our framework on RNN IP protection is accepted in Pattern Recognition, see [Project Repo](https://github.com/jianhanlim/ipr-imagecaptioning)
+5. Our framework on GAN IP protection is accepted in CVPR 2021, see [here](https://github.com/dingsheng-ong/ipr-gan).
+6. Our framework on RNN IP protection is accepted in AACL IJCNLP 2022, see [here](https://github.com/zhiqin1998/RecurrentIPR).
+7. Our framework on Multi-modal IP protection is accepted in Pattern Recognition 2022, see [here](https://github.com/jianhanlim/ipr-imagecaptioning).
 
 ## Description
 
@@ -110,19 +111,14 @@ For passport in our experiments, we randomly choose 20 images from the test data
 If you find this work useful for your research, please cite
 ```
 @article{Deepipr,
-  title={DeepIP: Deep Neural Network Intellectual Property Protection with Passports},
+  title={DeepIPR: Deep Neural Network Ownership Verification with Passports},
   author={Fan, Lixin and Ng, Kam Woh and Chan, Chee Seng and Qiang, Yang},
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  year={Accepted},
-}
-```
-
-```
-@inproceedings{Deepassport,
-  title={Rethinking Deep Neural Network Ownership Verification: Embedding Passports to Defeat Ambiguity Attacks},
-  author={Fan, Lixin and Ng, Kam Woh and Chan, Chee Seng},
-  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
-  year={2019},
+  year={2022},
+  volume={44},
+  number={10},
+  pages={6122-6139},
+  doi = {10.1109/TPAMI.2021.3088846}
 }
 ```
 
@@ -133,4 +129,4 @@ Suggestions and opinions on this work (both positive and negative) are greatly w
 ## License and Copyright
 The project is open source under BSD-3 license (see the ``` LICENSE ``` file).
 
-&#169;2019 Webank and University of Malaya.
+&#169;2019 Webank and Universiti Malaya.
