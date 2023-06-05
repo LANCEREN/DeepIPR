@@ -1,4 +1,7 @@
-torch
+torch==1.2
 torchvision
 numpy
 pandas
+torchstat
+torchsummary
+thop

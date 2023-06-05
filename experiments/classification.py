@@ -271,14 +271,31 @@ class ClassificationExperiment(Experiment):
         if self.save_interval > 0:
             self.save_model('epoch-0.pth')
 
+        iter_dataloader = iter(self.train_data)
+        data, _ = next(iter_dataloader)
+        data=data.cuda()
+        # import torchsummary
+        # torchsummary.summary(self.model, data[0].size(), batch_size=data.size()[0], device="cuda")
+        # from torchstat import stat
+        # stat(self.model, data[0].size())
+        # from thop import profile
+        # from thop import clever_format
+        # flops, params = profile(self.model, inputs=(torch.unsqueeze(data[0], dim=0),))
+        # flops, params = clever_format([flops, params], "%.3f")
+        # print(f"Total FLOPS: {flops}, total parameters: {params}.")
+        del iter_dataloader
+        torch.cuda.empty_cache()
+        self.model = self.model.to(self.device)
         print('Start training')
 
+        test_time = 0.0
         for ep in range(1, self.epochs + 1):
             train_metrics = self.trainer.train(ep, self.train_data, self.wm_data)
             print(f'Sign Detection Accuracy: {train_metrics["sign_acc"] * 100:6.4f}')
 
             valid_metrics = self.trainer.test(self.valid_data, 'Testing Result')
-
+            test_time += valid_metrics['time_test']
+            print(f"average test time: {test_time/ep/1000:.6f}s")
             wm_metrics = {}
 
             if self.train_backdoor:

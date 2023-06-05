@@ -192,7 +192,15 @@ class Trainer(object):
                 data = data.to(self.device, non_blocking=True)
                 target = target.to(self.device, non_blocking=True)
 
+                starter, ender = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
+                torch.cuda.synchronize()
+                starter.record()
                 pred = self.model(data)
+                ender.record()
+                torch.cuda.synchronize()  # 等待GPU任务完成
+                test_time= starter.elapsed_time(ender)
+                print(test_time)
+
                 loss_meter += F.cross_entropy(pred, target, reduction='sum').item()
                 pred = pred.max(1, keepdim=True)[1]
 
@@ -211,4 +219,5 @@ class Trainer(object):
 
         return {'loss': loss_meter,
                 'acc': acc_meter,
-                'time': time.time() - start_time}
+                'time': time.time() - start_time,
+                'time_test': test_time}
