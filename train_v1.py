@@ -36,11 +36,11 @@ def main():
                         help='use trigger data as passport')
 
     parser.add_argument('--train-passport', action='store_true', default=False,
-                        help='train passport')
+                        help='train passport, scheme v1')
     parser.add_argument('--train-backdoor', action='store_true', default=False,
-                        help='train backdoor, adding backdoor images for blackbox detection')
+                        help='train backdoor, scheme v3, adding backdoor images for blackbox detection')
     parser.add_argument('--train-private', action='store_true', default=False,
-                        help='train private')
+                        help='train private, scheme v2')
 
     # paths
     parser.add_argument('--pretrained-path',
